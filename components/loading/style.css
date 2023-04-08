@@ -1,0 +1,39 @@
+.loadingContainer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.progressBar {
+    width: 270px;
+    height: 7px;
+    background-color: rgb(56, 56, 56);
+    border-radius: 3.5px;
+    margin: auto;
+}
+
+.progressBar::after {
+    content: '';
+    display: block;
+    width: 0%;
+    height: 100%;
+    background-color: #ccc;
+    /* color of the progress bar */
+    border-radius: 5px;
+    animation: progressBarAnimation 1.5s linear forwards;
+}
+
+@keyframes progressBarAnimation {
+    0% {
+        width: 0%;
+    }
+
+    100% {
+        width: 100%;
+    }
+}

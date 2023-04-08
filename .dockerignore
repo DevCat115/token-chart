@@ -1,0 +1,9 @@
+/.vscode
+/.docker
+/.docker_data
+/.next
+Decode.code-workspace
+README.md
+docker-compose*.yml
+Dockerfile*
+.gitignore

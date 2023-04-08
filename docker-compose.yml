@@ -1,0 +1,48 @@
+version: '3.9'
+
+services:
+  # db:
+  #   container_name: db
+  #   image: postgres:16.2-alpine3.19
+  #   environment:
+  #     POSTGRES_USER: database
+  #     POSTGRES_PASSWORD: password
+  #     POSTGRES_DB: decode
+  #   ports:
+  #     - '5432:5432'
+  #   networks:
+  #     - network
+  #   volumes:
+  #     - ./.docker_data/postgres:/var/lib/postgresql/data
+
+  # web:
+  #   container_name: web
+  #   command: npm run dev
+  #   build:
+  #     context: .
+  #     dockerfile: ./Dockerfile.web
+  #   volumes:
+  #     - .:/app
+  #     - /app/node_modules
+  #   depends_on:
+  #     # - db
+  #     - redis
+  #   ports:
+  #     - '3000:3000'
+  #     - '3001:3001'
+  #   networks:
+  #     - network
+
+  redis:
+    container_name: redis
+    command: redis-server --protected-mode no
+    image: redis/redis-stack:latest
+    ports:
+      - '6379:6379'
+    networks:
+      - network
+    volumes:
+      - ./.docker_data/redis:/data
+networks:
+  network:
+    driver: bridge
